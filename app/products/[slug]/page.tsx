@@ -9,6 +9,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { getProductBySlug, products } from "@/data/products";
+import { slugify } from "@/data/product-details";
 
 type ProductPageProps = {
   params: Promise<{
@@ -177,7 +178,7 @@ export default async function ProductDetailPage({
               return (
                 <div
                   key={productName}
-                  className="group overflow-hidden rounded-2xl border border-stone-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-green-300 hover:shadow-lg"
+                  className="group relative overflow-hidden rounded-2xl border border-stone-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-green-300 hover:shadow-lg"
                 >
                   <div className="relative flex h-64 items-center justify-center overflow-hidden bg-[#f3f6ef]">
                     {image ? (
@@ -212,10 +213,10 @@ export default async function ProductDetailPage({
                     </p>
 
                     <Link
-                      href="/contact"
-                      className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-green-800 transition hover:text-green-600"
+                      href={`/products/${product.slug}/${slugify(productName)}`}
+                      className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-green-800 transition after:absolute after:inset-0 hover:text-green-600"
                     >
-                      Enquire about this product
+                      View details
                       <ArrowUpRight size={16} />
                     </Link>
                   </div>
