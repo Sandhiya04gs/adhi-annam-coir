@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Adhi Annam Coir Comforts – Website
 
-## Getting Started
+Corporate website for **Adhi Annam Coir Comforts Pvt. Ltd.** (Pollachi, Tamil Nadu), a manufacturer and exporter of coconut coir products since 2007. The site rebuilds the content and structure of <https://www.adhiannamcoir.com> as a Next.js application.
 
-First, run the development server:
+## Pages
+
+| Route | Description |
+| --- | --- |
+| `/` | Home – hero, product categories, blog highlights, strengths, clients, CTA |
+| `/about` | Company story, global reach, vision & mission, management team, certifications, values |
+| `/products` | All 9 product categories |
+| `/products/[slug]` | Category detail with the products available in it |
+| `/trade-shows` | Exhibition history and the PackVision Expo 2026 listing |
+| `/blog` | Blog articles (link to the official blog posts) |
+| `/contact` | Contact details, enquiry form (opens the visitor's email app), map |
+
+Product category slugs match the live website: `coir-packaging`, `coir-filtration`, `coir-interior-panel`, `coconut-coir-scrubber`, `coir-horticulture`, `coir-roll-and-sheet`, `erosion-control`, `mattresses`, `corporate-gifts`.
+
+## Tech stack
+
+- [Next.js](https://nextjs.org) 16 (App Router) with React 19 and TypeScript
+- Tailwind CSS 4
+- Framer Motion (home page animations)
+- Lucide React (icons)
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Production build:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Lint:
 
-## Learn More
+```bash
+npm run lint
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/                 Routes (pages, layout, 404)
+components/          Header and Footer
+data/products.ts     Product categories and product lists
+data/blog.ts         Blog articles (titles, images, links)
+public/              Logo, hero banner, certificates, product images
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Editing content
 
-## Deploy on Vercel
+- **Add or change a product:** edit `data/products.ts`. Add an entry to `productImages` and place the image in `public/products/` to show a product photo.
+- **Add a blog article:** add an object to `data/blog.ts`.
+- **Contact details:** update `components/Footer.tsx` and `app/contact/page.tsx`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- The enquiry form uses a `mailto:` link, so it opens the visitor's email application with the enquiry pre-filled. Connect it to an email API or form service if server-side delivery is needed.
+- Blog images are loaded from the official website's image host (`static.wixstatic.com`), which is allowed in `next.config.ts`.
