@@ -1,432 +1,169 @@
 
-"use client";
-
-import { useState, type FormEvent } from "react";
-import Link from "next/link";
+import Image from "next/image";
 import {
-  ArrowUpRight,
-  MapPin,
   Mail,
+  MapPin,
+  Navigation,
   Phone,
-  Clock,
-  CheckCircle2,
 } from "lucide-react";
+import { getOfficialPageByPath } from "@/data/original-site";
+import ContactEnquiryForm from "@/components/ContactEnquiryForm";
 
 const COMPANY_EMAIL = "hello@adhiannamcoir.com";
 const COMPANY_PHONE = "+919566294433";
-const COMPANY_ADDRESS =
-  "2/154-1, Unjavelampatti Udumalai Road, Pollachi, Coimbatore - 642003";
+
+const GOOGLE_MAPS_URL =
+  "https://www.google.com/maps/place/Adhi+Annam+Coir+Comforts+Pvt.+Ltd.+(Sughana+coir+mattress+manufacturer+in+Coimbatore)/@10.6554761,77.0633889,18.53z/data=!4m6!3m5!1s0x3ba839d51e3fac99:0x89ca2ec4703d1734!8m2!3d10.6547786!4d77.0638518!16s%2Fg%2F11bbrj_4df";
+
+const officialContactPage = getOfficialPageByPath("/contact");
+const contactImages = officialContactPage?.images ?? [];
+
+const facilityImages = contactImages.slice(0, 2);
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-
-    const name = String(formData.get("name") || "");
-    const company = String(formData.get("company") || "");
-    const email = String(formData.get("email") || "");
-    const phone = String(formData.get("phone") || "");
-    const product = String(formData.get("product") || "");
-    const message = String(formData.get("message") || "");
-
-    const subject = encodeURIComponent(
-      `Product Enquiry - ${name}`
-    );
-
-    const body = encodeURIComponent(
-      `Hello Adhi Annam Team,
-
-I would like to make a product enquiry.
-
-Name: ${name}
-Company: ${company}
-Email: ${email}
-Phone: ${phone}
-Product Interested In: ${product}
-
-Message:
-${message}
-
-Thank you.`
-    );
-
-    window.location.href = `mailto:${COMPANY_EMAIL}?subject=${subject}&body=${body}`;
-
-    setSubmitted(true);
-  }
-
   return (
-    <div className="bg-[#fafbf7]">
-      {/* Hero */}
-      <section className="bg-[#183d2b] px-6 py-24 text-white md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <p className="mb-6 text-sm font-semibold uppercase tracking-[0.3em] text-[#c6d9b1]">
-            Contact Adhi Annam
-          </p>
+    <div className="contact-page bg-white text-[#343434]">
 
-          <h1 className="max-w-4xl text-4xl font-semibold leading-tight md:text-7xl">
-            Let&apos;s Start a
-            <br />
-            Conversation
-          </h1>
-
-          <p className="mt-8 max-w-2xl text-lg leading-8 text-white/70">
-            Have a product enquiry or business requirement?
-            Connect with our team to explore natural coir solutions.
-          </p>
-
-          <p className="mt-8 text-sm text-white/60">
-            Home / Contact
-          </p>
-        </div>
+      {/* Page Heading */}
+      <section className="px-5 py-9 text-center md:px-8">
+        <h1 className="text-3xl font-medium text-[#3e4930] md:text-[38px]">
+          Get In Touch
+        </h1>
       </section>
 
-      {/* Contact Information and Form */}
-      <section className="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[0.8fr_1.2fr]">
-        {/* Contact Details */}
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-green-700">
-            Get in Touch
-          </p>
+      {/* Contact Images and Full Width Enquiry Form */}
+      <section className="contact-content-grid mx-auto grid max-w-[1360px] items-start gap-10 px-5 pb-14 md:grid-cols-[0.85fr_1.15fr] md:px-8 lg:grid-cols-[minmax(0,440px)_minmax(0,1fr)] lg:gap-12">
 
-          <h2 className="mt-4 text-3xl font-semibold leading-tight text-[#183d2b] md:text-4xl">
-            We&apos;d love to hear from you.
-          </h2>
-
-          <p className="mt-6 leading-8 text-stone-600">
-            Whether you are looking for product information, bulk
-            requirements or business partnerships, reach out to us.
-          </p>
-
-          <div className="mt-10 space-y-8">
-            {/* Address */}
-            <div className="flex gap-5">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e5eddb]">
-                <MapPin className="text-green-800" size={22} />
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-[#183d2b]">
-                  Office Address
-                </h3>
-
-                <p className="mt-2 text-sm leading-7 text-stone-500">
-                  {COMPANY_ADDRESS}
-                </p>
-
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=2%2F154-1%2C+Unjavelampatti+Udumalai+Road%2C+Pollachi%2C+Coimbatore+642003"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-green-800 hover:text-green-600"
-                >
-                  View on Google Maps
-                  <ArrowUpRight size={15} />
-                </a>
-              </div>
+        {/* Facility Images - Left Side */}
+        <div className="space-y-8">
+          {facilityImages.map((image, index) => (
+            <div
+              className={`contact-facility-image relative w-full overflow-hidden bg-[#f5f5f1] ${
+                index === 0 ? "aspect-[3/2]" : "aspect-[16/9]"
+              }`}
+              key={image.src}
+            >
+              <Image
+                src={image.src}
+                alt={
+                  image.alt && !/\.(png|jpe?g|webp)$/i.test(image.alt)
+                    ? image.alt
+                    : index === 0
+                      ? "Coir products prepared for dispatch"
+                      : "Coir fibre manufacturing at Adhi Annam Coir"
+                }
+                fill
+                preload={index === 0}
+                sizes="(max-width: 700px) 100vw, 440px"
+                className="object-cover"
+              />
             </div>
-
-            {/* Email */}
-            <div className="flex gap-5">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e5eddb]">
-                <Mail className="text-green-800" size={22} />
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-[#183d2b]">
-                  Email Address
-                </h3>
-
-                <a
-                  href={`mailto:${COMPANY_EMAIL}`}
-                  className="mt-2 block text-sm text-stone-500 transition hover:text-green-800"
-                >
-                  {COMPANY_EMAIL}
-                </a>
-              </div>
-            </div>
-
-            {/* Phone */}
-            <div className="flex gap-5">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e5eddb]">
-                <Phone className="text-green-800" size={22} />
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-[#183d2b]">
-                  Phone Number
-                </h3>
-
-                <a
-                  href={`tel:${COMPANY_PHONE}`}
-                  className="mt-2 block text-sm text-stone-500 transition hover:text-green-800"
-                >
-                  +91 95662 94433
-                </a>
-              </div>
-            </div>
-
-            {/* Enquiries */}
-            <div className="flex gap-5">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#e5eddb]">
-                <Clock className="text-green-800" size={22} />
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-[#183d2b]">
-                  Business Enquiries
-                </h3>
-
-                <p className="mt-2 text-sm leading-7 text-stone-500">
-                  Contact our team for product specifications,
-                  quotations and partnership discussions.
-                </p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* Enquiry Form */}
-        <div className="rounded-3xl border border-stone-200 bg-white p-7 shadow-sm md:p-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-green-700">
-            Send an Enquiry
-          </p>
+        {/* Enquiry Form - Full Available Width */}
+        <div className="contact-form-panel w-full min-w-0">
+          <ContactEnquiryForm />
+        </div>
 
-          <h2 className="mt-3 text-2xl font-semibold text-[#183d2b]">
-            Tell us what you need
-          </h2>
+      </section>
 
-          <p className="mt-3 text-sm leading-7 text-stone-500">
-            Share your contact details and product requirements.
-          </p>
+      {/* Location Section */}
+      <section className="border-t border-[#e8e8e2] bg-[#f8f9f5] px-5 py-16 md:px-8">
+        <div className="mx-auto max-w-[1200px]">
 
-          <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-            <div className="grid gap-6 md:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="mb-2 block text-sm font-medium text-stone-700"
-                >
-                  Full Name *
-                </label>
+          {/* Location Heading */}
+          <div className="mb-10 text-center">
+            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#788b4d]">
+              Visit Our Facility
+            </p>
 
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  autoComplete="name"
-                  placeholder="Enter your name"
-                  className="w-full rounded-xl border border-stone-300 px-4 py-3 outline-none transition focus:border-green-700 focus:ring-2 focus:ring-green-100"
-                />
+            <h2 className="text-3xl font-semibold text-[#3e4930] md:text-4xl">
+              Our Location
+            </h2>
+
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-[#777] md:text-base">
+              Visit Adhi Annam Coir Comforts to explore our manufacturing
+              facility and learn more about our natural coir products.
+            </p>
+          </div>
+
+          {/* Location Card */}
+          <div className="grid overflow-hidden rounded-2xl bg-white shadow-[0_8px_35px_rgba(0,0,0,0.07)] md:grid-cols-[0.8fr_1.2fr]">
+
+            {/* Address Details */}
+            <div className="flex flex-col justify-center p-7 md:p-10">
+
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-[#eef2e6]">
+                <MapPin size={24} className="text-[#6c843c]" />
               </div>
 
-              <div>
-                <label
-                  htmlFor="company"
-                  className="mb-2 block text-sm font-medium text-stone-700"
-                >
-                  Company Name
-                </label>
+              <h3 className="mb-4 text-xl font-semibold text-[#3e4930]">
+                Adhi Annam Coir Comforts Pvt. Ltd.
+              </h3>
 
-                <input
-                  id="company"
-                  name="company"
-                  type="text"
-                  autoComplete="organization"
-                  placeholder="Enter company name"
-                  className="w-full rounded-xl border border-stone-300 px-4 py-3 outline-none transition focus:border-green-700 focus:ring-2 focus:ring-green-100"
-                />
-              </div>
+              <p className="text-[15px] leading-7 text-[#666]">
+                2/154-1, Unjavelampatti,
+                <br />
+                Udumalai Road, Pollachi,
+                <br />
+                Coimbatore - 642003,
+                <br />
+                Tamil Nadu, India.
+              </p>
+
+              <div className="my-7 h-px w-full bg-[#eaece5]" />
+
+              <a
+                href={`tel:${COMPANY_PHONE}`}
+                className="flex items-center gap-3 text-sm text-[#555] transition hover:text-[#6c843c]"
+              >
+                <Phone size={18} className="text-[#6c843c]" />
+                +91 95662 94433
+              </a>
+
+              <a
+                href={`mailto:${COMPANY_EMAIL}`}
+                className="mt-4 flex items-center gap-3 break-all text-sm text-[#555] transition hover:text-[#6c843c]"
+              >
+                <Mail size={18} className="shrink-0 text-[#6c843c]" />
+                {COMPANY_EMAIL}
+              </a>
+
+              {/* Get Directions */}
+              <a
+                href={GOOGLE_MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex w-fit items-center gap-2 rounded-md bg-[#536b35] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#405329]"
+              >
+                Get Directions
+                <Navigation size={16} />
+              </a>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-2 block text-sm font-medium text-stone-700"
-                >
-                  Email Address *
-                </label>
-
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  placeholder="you@example.com"
-                  className="w-full rounded-xl border border-stone-300 px-4 py-3 outline-none transition focus:border-green-700 focus:ring-2 focus:ring-green-100"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="phone"
-                  className="mb-2 block text-sm font-medium text-stone-700"
-                >
-                  Phone Number *
-                </label>
-
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  required
-                  autoComplete="tel"
-                  pattern="[0-9+() -]{7,20}"
-                  placeholder="Enter phone number"
-                  className="w-full rounded-xl border border-stone-300 px-4 py-3 outline-none transition focus:border-green-700 focus:ring-2 focus:ring-green-100"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label
-                htmlFor="product"
-                className="mb-2 block text-sm font-medium text-stone-700"
-              >
-                Product Interested In *
-              </label>
-
-              <select
-                id="product"
-                name="product"
-                required
-                defaultValue=""
-                className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 outline-none focus:border-green-700 focus:ring-2 focus:ring-green-100"
-              >
-                <option value="" disabled>
-                  Select a product
-                </option>
-                <option value="Coir Packaging">Coir Packaging</option>
-                <option value="Coir Filtration">Coir Filtration</option>
-                <option value="Coir Interior Panels">Coir Interior Panels</option>
-                <option value="Coir Scrubbers">Coir Scrubbers</option>
-                <option value="Coir Horticulture">Coir Horticulture</option>
-                <option value="Coir Rolls and Sheets">Coir Rolls & Sheets</option>
-                <option value="Coir Erosion Control">Coir Erosion Control</option>
-                <option value="Coir Mattresses">Coir Mattresses</option>
-                <option value="Coir Corporate Gifts">Coir Corporate Gifts</option>
-                <option value="Other Enquiry">Other Enquiry</option>
-              </select>
-            </div>
-
-            <div>
-              <label
-                htmlFor="message"
-                className="mb-2 block text-sm font-medium text-stone-700"
-              >
-                Your Message *
-              </label>
-
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows={5}
-                placeholder="Tell us about your requirements..."
-                className="w-full resize-none rounded-xl border border-stone-300 px-4 py-3 outline-none focus:border-green-700 focus:ring-2 focus:ring-green-100"
+            {/* Google Maps */}
+            <div className="relative min-h-[350px] md:min-h-[480px]">
+              <iframe
+                src="https://www.google.com/maps?q=Adhi%20Annam%20Coir%20Comforts%20Pvt.%20Ltd.,%20Pollachi&output=embed"
+                width="100%"
+                height="100%"
+                style={{
+                  border: 0,
+                  position: "absolute",
+                  inset: 0,
+                }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                title="Adhi Annam Coir Comforts Factory Location"
               />
             </div>
 
-            <button
-              type="submit"
-              className="flex w-full items-center justify-center gap-3 rounded-full bg-[#183d2b] px-7 py-4 font-semibold text-white transition hover:bg-green-800"
-            >
-              Send Enquiry
-              <ArrowUpRight size={18} />
-            </button>
-
-            {submitted && (
-              <div
-                role="status"
-                className="flex gap-3 rounded-xl bg-[#eaf0e3] p-4 text-sm leading-6 text-green-900"
-              >
-                <CheckCircle2 className="mt-1 shrink-0" size={20} />
-
-                <p>
-                  Your email application should open with your enquiry
-                  details. Please review and send the email to complete
-                  your enquiry. If it does not open, email us directly at{" "}
-                  <a
-                    href={`mailto:${COMPANY_EMAIL}`}
-                    className="font-semibold underline"
-                  >
-                    {COMPANY_EMAIL}
-                  </a>.
-                </p>
-              </div>
-            )}
-          </form>
+          </div>
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="bg-white px-6 py-16">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-green-700">
-              Find Our Location
-            </p>
-
-            <h2 className="mt-3 text-3xl font-semibold text-[#183d2b]">
-              Visit Our Office
-            </h2>
-
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-stone-500">
-              Adhi Annam Coir Comforts Pvt. Ltd.,
-              Unjavelampatti, Pollachi, Tamil Nadu.
-            </p>
-          </div>
-
-          <div className="overflow-hidden rounded-3xl border border-stone-200">
-            <iframe
-              title="Adhi Annam Coir office location in Pollachi"
-              src="https://maps.google.com/maps?q=Adhi%20Annam%20Coir%20Comforts%20Pvt%20Ltd%2C%20Unjavelampatti%2C%20Pollachi%2C%20Tamil%20Nadu&t=&z=14&ie=UTF8&iwloc=&output=embed"
-              width="100%"
-              height="400"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="block"
-            />
-          </div>
-
-          <a
-            href="https://www.google.com/maps/search/?api=1&query=Adhi+Annam+Coir+Comforts+Pvt+Ltd+Unjavelampatti+Pollachi"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-green-800 hover:text-green-600"
-          >
-            Get Directions
-            <ArrowUpRight size={16} />
-          </a>
-        </div>
-      </section>
-
-      {/* Bottom CTA */}
-      <section className="bg-[#183d2b] px-6 py-20 text-center text-white">
-        <h2 className="mx-auto max-w-2xl text-3xl font-semibold md:text-4xl">
-          Looking for natural coir products?
-        </h2>
-
-        <p className="mx-auto mt-5 max-w-xl leading-7 text-white/70">
-          Explore our product range and discover sustainable solutions
-          for your business.
-        </p>
-
-        <Link
-          href="/products"
-          className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#c6d9b1] px-8 py-4 font-semibold text-[#183d2b] transition hover:bg-white"
-        >
-          Explore Products
-          <ArrowUpRight size={18} />
-        </Link>
-      </section>
     </div>
   );
 }

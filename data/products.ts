@@ -1,27 +1,43 @@
 
+export type ProductImage = {
+  name: string;
+  image: string;
+};
+
 export type ProductCategory = {
   id: number;
   name: string;
   slug: string;
-  image: string;
+  sourceSlug: string;
+  aliases?: string[];
   description: string;
   applications: string;
+  image?: string;
   productNames: string[];
-  productImages?: {
-    name: string;
-    image: string;
-  }[];
+  productImages: ProductImage[];
 };
+
+// Creates product entries without images.
+// Add the actual image paths later when you download the photos.
+function createProductImages(productNames: string[]): ProductImage[] {
+  return productNames.map((name) => ({
+    name,
+    image: "",
+  }));
+}
 
 export const products: ProductCategory[] = [
   {
     id: 1,
     name: "Coir Packaging",
     slug: "coir-packaging",
-    image: "/products/coir-packaging.jpg",
+    sourceSlug: "coir-packaging",
+    aliases: ["packaging-solution"],
     description:
       "Sustainable coconut coir packaging products designed for protective shipping, cushioning and eco-friendly packaging solutions.",
-    applications: "Shipping, logistics, warehousing and product protection",
+    applications:
+      "Shipping, logistics, warehousing and product protection",
+    image: "/products/coir-packaging.jpg",
     productNames: [
       "Coir Bubble Wrap",
       "Coir Void Fillers",
@@ -47,49 +63,81 @@ export const products: ProductCategory[] = [
       { name: "Coir Packaging Container", image: "/products/coir-packaging-container.jpg" },
     ],
   },
+
   {
     id: 2,
     name: "Coir Filtration",
     slug: "coir-filtration",
-    image: "/products/coir-filtration.jpg",
+    sourceSlug: "coir-filtration",
+    aliases: ["filter-application"],
     description:
-      "Natural coconut coir fibre filtration media for air filtration, wastewater treatment and industrial filtration systems.",
-    applications: "Air filtration, wastewater treatment, aquaculture and industrial systems",
-    productNames: ["Coir Air Filter", "Coir Wastewater Filter Media"],
+      "Natural coir fibre solutions for air and water treatment, aquaculture and industrial filtration.",
+    applications: "Air filtration, water treatment and aquaculture",
+    image: "/products/coir-filtration.jpg",
+    productNames: [
+      "Coir Air Filter",
+      "Coir Wastewater Filter Media",
+    ],
+    productImages: createProductImages([
+      "Coir Air Filter",
+      "Coir Wastewater Filter Media",
+    ]),
   },
+
   {
     id: 3,
     name: "Coir Interior Panel",
     slug: "coir-interior-panel",
-    image: "/products/coir-interior-panel.jpg",
+    sourceSlug: "coir-interior-panel",
+    aliases: ["interior-solution"],
     description:
-      "Coconut coir fibre panels developed for acoustic treatment, insulation and interior applications.",
-    applications: "Architecture, construction, commercial interiors and interior design",
+      "Coconut coir-based panels for interior and functional applications.",
+    applications: "Interior design and building applications",
+    image: "/products/coir-interior-panel.jpg",
     productNames: [
       "Coir Roof Panel",
       "Coir Insulation Panel",
       "Coir Acoustic Panel",
       "Coir Board Engraving",
     ],
+    productImages: createProductImages([
+      "Coir Roof Panel",
+      "Coir Insulation Panel",
+      "Coir Acoustic Panel",
+      "Coir Board Engraving",
+    ]),
   },
+
   {
     id: 4,
     name: "Coir Scrubber",
-    slug: "coconut-coir-scrubber",
-    image: "/products/coir-scrubber.jpg",
+    slug: "coir-scrubber",
+    sourceSlug: "coconut-coir-scrubber",
+    aliases: ["home-application"],
     description:
-      "Natural coconut coir fibre scrubbers designed for household cleaning and hospitality applications.",
-    applications: "Kitchen cleaning, bathrooms, households and hospitality",
-    productNames: ["Coir Kitchen Scrubber", "Coir Bath Scrubber"],
+      "Natural coconut fibre scrubber products for cleaning and everyday use.",
+    applications: "Household and hospitality cleaning",
+    image: "/products/coir-scrubber.jpg",
+    productNames: [
+      "Coir Kitchen Scrubber",
+      "Coir Bath Scrubber",
+    ],
+    productImages: createProductImages([
+      "Coir Kitchen Scrubber",
+      "Coir Bath Scrubber",
+    ]),
   },
+
   {
     id: 5,
     name: "Coir Horticulture",
     slug: "coir-horticulture",
-    image: "/products/coir-horticulture.jpg",
+    sourceSlug: "coir-horticulture",
+    aliases: ["garden-application"],
     description:
-      "Coconut coir horticulture products for plant growing, nurseries, gardening and commercial cultivation.",
-    applications: "Nurseries, greenhouses, gardening and commercial growing",
+      "Natural coir-based growing media and horticultural solutions.",
+    applications: "Nurseries, greenhouses and commercial growing",
+    image: "/products/coir-horticulture.jpg",
     productNames: [
       "Coir Pots",
       "Coir Weed Prevention Mats",
@@ -101,38 +149,68 @@ export const products: ProductCategory[] = [
       "Coir Grow Mat",
       "Coir Seedling Tray",
     ],
+    productImages: createProductImages([
+      "Coir Pots",
+      "Coir Weed Prevention Mats",
+      "Coco Basket Liner",
+      "Coco Trough Liner",
+      "Coir Coco Pole",
+      "Coir Microgreen Grow Mat",
+      "Coir Root Trainer",
+      "Coir Grow Mat",
+      "Coir Seedling Tray",
+    ]),
   },
+
   {
     id: 6,
-    name: "Coir Roll & Sheet",
-    slug: "coir-roll-and-sheet",
-    image: "/products/coir-roll-sheet.jpg",
+    name: "Coir Roll & Sheets",
+    slug: "coir-roll-sheets",
+    sourceSlug: "coir-roll-and-sheet",
     description:
-      "Needlefelt coir rolls and rubberized coir sheets for various industrial and commercial applications.",
-    applications: "Industrial applications, cushioning, insulation and coir-based manufacturing",
-    productNames: ["Coir Needlefelt Roll", "Rubberized Coir Sheet"],
+      "Coir rolls and sheets for commercial and industrial applications.",
+    applications: "Flooring, construction and industrial uses",
+    image: "/products/coir-roll-sheet.jpg",
+    productNames: [
+      "Coir Needlefelt Roll",
+      "Rubberized Coir Sheet",
+    ],
+    productImages: createProductImages([
+      "Coir Needlefelt Roll",
+      "Rubberized Coir Sheet",
+    ]),
   },
+
   {
     id: 7,
     name: "Coir Erosion Control",
-    slug: "erosion-control",
-    image: "/products/coir-erosion-control.jpg",
+    slug: "coir-erosion-control",
+    sourceSlug: "erosion-control",
     description:
-      "Coconut coir fibre products designed to support soil stabilization, slope protection and erosion management.",
-    applications: "Road construction, slope stabilization, landscaping and land development",
+      "Natural coir products designed to help control soil erosion.",
+    applications: "Landscaping and soil conservation",
+    image: "/products/coir-erosion-control.jpg",
     productNames: [
       "Coir Geotextile",
+      "Coir Erosion Control Blanket",
       "Coir Erosion Control Blanket (PP Net)",
     ],
+    productImages: createProductImages([
+      "Coir Geotextile",
+      "Coir Erosion Control Blanket",
+      "Coir Erosion Control Blanket (PP Net)",
+    ]),
   },
+
   {
     id: 8,
     name: "Coir Mattresses",
-    slug: "mattresses",
-    image: "/products/coir-mattresses.jpg",
+    slug: "coir-mattresses",
+    sourceSlug: "mattresses",
     description:
-      "A range of coir mattresses and bedding products for residential, hospitality and healthcare applications.",
-    applications: "Homes, hotels, hospitals and bedding",
+      "Coconut coir fibre products for mattress and bedding applications.",
+    applications: "Mattress manufacturing and bedding",
+    image: "/products/coir-mattresses.jpg",
     productNames: [
       "Coir Memory Foam Mattress",
       "Foam Mattress",
@@ -145,15 +223,29 @@ export const products: ProductCategory[] = [
       "Memory Foam Pillow",
       "Coir & Cotton Pillow",
     ],
+    productImages: createProductImages([
+      "Coir Memory Foam Mattress",
+      "Foam Mattress",
+      "Rubberized Coir Mattress",
+      "Slim Coir Mattresses",
+      "Back Pain Relief Mattress",
+      "Foldable Travel Mattress",
+      "Hospital Bed Mattress",
+      "Waterproof Mattress Protector",
+      "Memory Foam Pillow",
+      "Coir & Cotton Pillow",
+    ]),
   },
+
   {
     id: 9,
     name: "Coir Corporate Gifts",
-    slug: "corporate-gifts",
-    image: "/products/coir-corporate-gifts.jpg",
+    slug: "coir-corporate-gifts",
+    sourceSlug: "corporate-gifts",
     description:
-      "Eco-friendly coir-based corporate gifts and accessories suitable for business gifting and promotional purposes.",
-    applications: "Corporate gifting, office accessories and promotional gifts",
+      "Natural coir products suitable for corporate gifting.",
+    applications: "Corporate gifting and promotional products",
+    image: "/products/coir-corporate-gifts.jpg",
     productNames: [
       "Laptop Stand",
       "Table Organizer",
@@ -162,9 +254,22 @@ export const products: ProductCategory[] = [
       "Coir Pots",
       "Coir Wood Plaque",
     ],
+    productImages: createProductImages([
+      "Laptop Stand",
+      "Table Organizer",
+      "Coir Wood Painting",
+      "Mobile Stand",
+      "Coir Pots",
+      "Coir Wood Plaque",
+    ]),
   },
 ];
 
 export function getProductBySlug(slug: string) {
-  return products.find((product) => product.slug === slug);
+  return products.find(
+    (product) =>
+      product.slug === slug ||
+      product.sourceSlug === slug ||
+      product.aliases?.includes(slug),
+  );
 }

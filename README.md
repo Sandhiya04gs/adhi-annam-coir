@@ -10,11 +10,13 @@ Corporate website for **Adhi Annam Coir Comforts Pvt. Ltd.** (Pollachi, Tamil Na
 | `/about` | Company story, global reach, vision & mission, management team, certifications, values |
 | `/products` | All 9 product categories |
 | `/products/[slug]` | Category detail with the products available in it |
+| `/products/[slug]/[product]` | Product specifications, applications and enquiry links |
 | `/trade-shows` | Exhibition history and the PackVision Expo 2026 listing |
-| `/blog` | Blog articles (link to the official blog posts) |
+| `/blog` | Blog articles |
+| `/blog/[slug]` | Article detail |
 | `/contact` | Contact details, enquiry form (opens the visitor's email app), map |
 
-Product category slugs match the live website: `coir-packaging`, `coir-filtration`, `coir-interior-panel`, `coconut-coir-scrubber`, `coir-horticulture`, `coir-roll-and-sheet`, `erosion-control`, `mattresses`, `corporate-gifts`.
+Product category slugs are defined in `data/products.ts`.
 
 ## Tech stack
 
@@ -55,11 +57,11 @@ public/              Logo, hero banner, certificates, product images
 
 ## Editing content
 
-- **Add or change a product:** edit `data/products.ts`. Add an entry to `productImages` and place the image in `public/products/` to show a product photo.
+- **Add or change a product:** edit `data/products.ts` and add its specifications in `data/product-details.ts`. Place product photos in `public/products/`.
 - **Add a blog article:** add an object to `data/blog.ts`.
 - **Contact details:** update `components/Footer.tsx` and `app/contact/page.tsx`.
 
 ## Notes
 
-- The enquiry form uses a `mailto:` link, so it opens the visitor's email application with the enquiry pre-filled. Connect it to an email API or form service if server-side delivery is needed.
-- Blog images are loaded from the official website's image host (`static.wixstatic.com`), which is allowed in `next.config.ts`.
+- The enquiry form uses a `mailto:` link, so it opens the visitor's email application with the enquiry pre-filled.
+- Product and blog imagery is stored locally under `public/`.

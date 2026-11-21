@@ -1,160 +1,265 @@
-
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { useEffect, useState, type FocusEvent } from "react";
+import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import { products } from "@/data/products";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "About Us", href: "/about" },
   { name: "Products", href: "/products" },
+  { name: "About", href: "/about" },
   { name: "Trade Shows", href: "/trade-shows" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ];
 
-const certificates = [
-  { src: "/images/certificates/iso-9001.jpg", alt: "ISO 9001:2015 and ISO 14001:2015 certified company", width: 114 },
-  { src: "/images/certificates/tuv-sud.jpg", alt: "TUV SUD ISO 9001", width: 46 },
-  { src: "/images/certificates/iso-14001.jpg", alt: "TUV SUD ISO 14001", width: 44 },
-  { src: "/images/certificates/zed.jpg", alt: "ZED certification", width: 44 },
-  { src: "/images/certificates/certificate-5.jpg", alt: "IS 8391 ISI mark", width: 43 },
-];
-
 export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [desktopProductsOpen, setDesktopProductsOpen] = useState(false);
 
-  function isActive(href: string) {
-    if (href === "/") {
-      return pathname === "/";
+  useEffect(() => {
+    function handlePopState() {
+      setMenuOpen(false);
+      setMobileProductsOpen(false);
+      setDesktopProductsOpen(false);
     }
 
-    return pathname === href || pathname.startsWith(`${href}/`);
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen && !desktopProductsOpen) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        setMobileProductsOpen(false);
+        setDesktopProductsOpen(false);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen, desktopProductsOpen]);
+
+  function isActive(href: string) {
+    return href === "/"
+      ? pathname === "/"
+      : pathname === href || pathname.startsWith(`${href}/`);
+  }
+
+  function closeMenus() {
+    setMenuOpen(false);
+    setMobileProductsOpen(false);
+    setDesktopProductsOpen(false);
+  }
+
+  function handleProductsBlur(event: FocusEvent<HTMLDivElement>) {
+    const nextTarget = event.relatedTarget;
+    if (!(nextTarget instanceof Node) || !event.currentTarget.contains(nextTarget)) {
+      setDesktopProductsOpen(false);
+    }
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-stone-200 bg-white/95 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+    <header className="site-header">
+      <a href="#main-content" className="site-skip-link">
+        Skip to content
+      </a>
 
-        {/* Logo */}
+      <div className="site-header-inner">
         <Link
           href="/"
-          onClick={() => setMenuOpen(false)}
-          className="flex items-center"
-          aria-label="Adhi Annam home"
+          onClick={closeMenus}
+          className="site-logo"
+          aria-label="Adhi Annam Coir home"
         >
           <Image
             src="/annam-logo.jpg"
-            alt="Adhi Annam Coir Comforts"
+            alt="Adhi Annam Coir — Natural, Sustainable, Durable"
             width={247}
             height={63}
             priority
-            className="h-14 w-auto object-contain sm:h-16"
+            className="site-logo-image"
           />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav
-          aria-label="Main navigation"
-          className="hidden items-center gap-6 lg:flex"
-        >
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              aria-current={isActive(item.href) ? "page" : undefined}
-              className={`relative py-2 text-sm font-medium transition ${
-                isActive(item.href)
-                  ? "text-green-900 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-green-800"
-                  : "text-stone-700 hover:text-green-800"
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
+        <nav aria-label="Main navigation" className="site-navigation">
+          {navigation
+            .filter((item) => item.href !== "/contact")
+            .map((item) =>
+              item.href === "/products" ? (
+                <div
+                  className="site-products-nav"
+                  key={item.name}
+                  onBlur={handleProductsBlur}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={closeMenus}
+                    aria-current={isActive(item.href) ? "page" : undefined}
+                    className={`site-nav-link${isActive(item.href) ? " is-active" : ""}`}
+                  >
+                    {item.name}
+                  </Link>
+                  <button
+                    type="button"
+                    aria-label={
+                      desktopProductsOpen
+                        ? "Close product categories"
+                        : "Open product categories"
+                    }
+                    aria-expanded={desktopProductsOpen}
+                    onClick={() =>
+                      setDesktopProductsOpen((open) => !open)
+                    }
+                    className="site-nav-dropdown-trigger"
+                  >
+                    <ChevronDown
+                      size={15}
+                      aria-hidden="true"
+                      className={desktopProductsOpen ? "is-rotated" : ""}
+                    />
+                  </button>
+                  <div
+                    className={`site-product-menu${desktopProductsOpen ? " is-open" : ""}`}
+                    aria-hidden={!desktopProductsOpen}
+                    inert={!desktopProductsOpen}
+                  >
+                    <Link
+                      href="/products"
+                      onClick={closeMenus}
+                      className="site-product-menu-link site-product-menu-all"
+                    >
+                      All Products
+                    </Link>
+                    {products.map((product) => (
+                      <Link
+                        key={product.id}
+                        href={`/products/${product.slug}`}
+                        onClick={closeMenus}
+                        className="site-product-menu-link"
+                      >
+                        {product.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={closeMenus}
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                  className={`site-nav-link${isActive(item.href) ? " is-active" : ""}`}
+                >
+                  {item.name}
+                </Link>
+              ),
+            )}
         </nav>
 
-        {/* Certification badges */}
-        <div
-          className="hidden items-center gap-2 xl:flex"
-          aria-label="Certifications: ISO 9001, TUV SUD, ISO 14001, ZED, ISI"
-        >
-          {certificates.map((badge) => (
-            <Image
-              key={badge.src}
-              src={badge.src}
-              alt={badge.alt}
-              width={badge.width}
-              height={40}
-              className="h-8 w-auto"
-            />
-          ))}
-        </div>
-
-        {/* Desktop Quote Button */}
         <Link
           href="/contact"
-          className="hidden items-center gap-2 rounded-full bg-green-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-800 lg:flex"
+          onClick={closeMenus}
+          aria-current={isActive("/contact") ? "page" : undefined}
+          className="site-header-cta"
         >
-          Get a Quote
-          <ArrowUpRight size={16} />
+          Contact Us <ArrowUpRight size={16} aria-hidden="true" />
         </Link>
 
-        {/* Mobile Menu Button */}
         <button
           type="button"
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => {
+            setMenuOpen((open) => !open);
+            setMobileProductsOpen(false);
+          }}
           aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
-          className="flex items-center gap-2 rounded-lg border border-stone-200 p-2 text-green-900 transition hover:bg-green-50 lg:hidden"
+          className="site-mobile-toggle"
         >
-          {menuOpen ? <X size={23} /> : <Menu size={23} />}
-          <span className="text-sm">
-            {menuOpen ? "Close" : "Menu"}
-          </span>
+          {menuOpen ? (
+            <X size={21} aria-hidden="true" />
+          ) : (
+            <Menu size={21} aria-hidden="true" />
+          )}
+          <span>{menuOpen ? "Close" : "Menu"}</span>
         </button>
       </div>
 
-      {/* Mobile Navigation */}
-      {menuOpen && (
-        <nav
-          id="mobile-navigation"
-          aria-label="Mobile navigation"
-          className="border-t border-stone-200 bg-white px-5 py-4 shadow-lg lg:hidden"
-        >
-          <div className="mx-auto flex max-w-7xl flex-col">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => setMenuOpen(false)}
-                aria-current={isActive(item.href) ? "page" : undefined}
-                className={`rounded-lg px-4 py-3 text-sm font-medium transition ${
-                  isActive(item.href)
-                    ? "bg-green-50 text-green-900"
-                    : "text-stone-700 hover:bg-green-50 hover:text-green-900"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-
-            <Link
-              href="/contact"
-              onClick={() => setMenuOpen(false)}
-              className="mt-3 flex items-center justify-center gap-2 rounded-full bg-green-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-800"
-            >
-              Get a Quote
-              <ArrowUpRight size={16} />
-            </Link>
-          </div>
-        </nav>
-      )}
+      <nav
+        id="mobile-navigation"
+        aria-label="Mobile navigation"
+        aria-hidden={!menuOpen}
+        inert={!menuOpen}
+        className={`site-mobile-panel${menuOpen ? " is-open" : ""}`}
+      >
+        <div className="site-mobile-panel-inner">
+          {navigation.map((item) => (
+            <div className="site-mobile-item" key={item.name}>
+              <div className="site-mobile-item-row">
+                <Link
+                  href={item.href}
+                  onClick={closeMenus}
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                  className={`site-mobile-link${isActive(item.href) ? " is-active" : ""}`}
+                >
+                  {item.name}
+                </Link>
+                {item.href === "/products" && (
+                  <button
+                    type="button"
+                    aria-label="Toggle product categories"
+                    aria-expanded={mobileProductsOpen}
+                    onClick={() =>
+                      setMobileProductsOpen((open) => !open)
+                    }
+                    className="site-mobile-products-toggle"
+                  >
+                    <ChevronDown
+                      size={17}
+                      aria-hidden="true"
+                      className={mobileProductsOpen ? "is-rotated" : ""}
+                    />
+                  </button>
+                )}
+              </div>
+              {item.href === "/products" && (
+                <div
+                  className={`site-mobile-products${mobileProductsOpen ? " is-open" : ""}`}
+                  aria-hidden={!mobileProductsOpen}
+                  inert={!mobileProductsOpen}
+                >
+                  <Link
+                    href="/products"
+                    onClick={closeMenus}
+                    className="site-mobile-product-link"
+                  >
+                    All Products
+                  </Link>
+                  {products.map((product) => (
+                    <Link
+                      key={product.id}
+                      href={`/products/${product.slug}`}
+                      onClick={closeMenus}
+                      className="site-mobile-product-link"
+                    >
+                      {product.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </nav>
     </header>
   );
 }
