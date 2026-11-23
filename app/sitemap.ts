@@ -2,6 +2,7 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/data/blog";
 import { products } from "@/data/products";
+import { tradeShows } from "@/data/trade-shows";
 
 const SITE_URL = "https://www.adhiannamcoir.com";
 
@@ -58,5 +59,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ]);
 
-  return [...pages, ...productPages, ...blogPages];
+  const tradeShowPages: MetadataRoute.Sitemap = tradeShows.map((event) => ({
+    url: `${SITE_URL}/trade-shows/${event.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: event.status === "upcoming" ? 0.8 : 0.7,
+  }));
+
+  return [...pages, ...productPages, ...blogPages, ...tradeShowPages];
 }
