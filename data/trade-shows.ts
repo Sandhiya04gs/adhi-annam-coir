@@ -3,7 +3,9 @@ export type TradeShow = {
   name: string;
   location: string;
   country: string;
+  year: number;
   description?: string;
+  highlights: string[];
   image: string;
   imageAlt: string;
   galleryImages?: { src: string; alt: string }[];
@@ -19,6 +21,12 @@ export const tradeShows: TradeShow[] = [
     name: "PackVision Expo – Chennai, India 2026",
     location: "Chennai, Tamil Nadu",
     country: "India",
+    year: 2026,
+    highlights: [
+      "Dates: 15.10.2026 to 17.10.2026",
+      "Venue: Chennai Trade Centre",
+      "Stall number: P-89",
+    ],
     image: "/images/trade-shows/packvision-expo-2026.webp",
     imageAlt: "PackVision Expo",
     status: "upcoming",
@@ -31,8 +39,14 @@ export const tradeShows: TradeShow[] = [
     name: "ProPak India’26",
     location: "Mumbai",
     country: "India",
+    year: 2026,
     description:
       "Our first Pack Expo, showcasing sustainable coir-based packaging solutions as eco-friendly alternatives to conventional packaging materials.",
+    highlights: [
+      "First Pack Expo participation",
+      "Sustainable coir-based packaging solutions",
+      "Eco-friendly alternatives to conventional packaging materials",
+    ],
     image: "/images/trade-shows/propak-india-2026.webp",
     imageAlt: "Adhi Annam Coir at ProPak India",
     galleryImages: [
@@ -52,8 +66,14 @@ export const tradeShows: TradeShow[] = [
     name: "IPM’26",
     location: "Essen",
     country: "Germany",
+    year: 2026,
     description:
       "Returning to IPM Essen in Germany for the second consecutive year! It was an incredible opportunity to reconnect with global industry leaders, explore the latest innovations in horticulture, and strengthen our international partnerships for 2026",
+    highlights: [
+      "Second consecutive year at IPM Essen",
+      "Reconnected with global industry leaders",
+      "Explored horticulture innovations and strengthened international partnerships for 2026",
+    ],
     image: "/images/trade-shows/ipm-essen-2026.webp",
     imageAlt: "Adhi Annam Coir exhibiting at IPM Essen",
     status: "past",
@@ -63,8 +83,12 @@ export const tradeShows: TradeShow[] = [
     name: "Cultivate’25",
     location: "Ohio",
     country: "USA",
+    year: 2025,
     description:
       "Showcasing our full range of 100% natural coconut fiber-based horticulture products.",
+    highlights: [
+      "Full range of 100% natural coconut fiber-based horticulture products",
+    ],
     image: "/images/trade-shows/cultivate-2025.webp",
     imageAlt: "Adhi Annam Coir at Cultivate",
     status: "past",
@@ -74,8 +98,10 @@ export const tradeShows: TradeShow[] = [
     name: "Architect & Interior Expo’25",
     location: "Chennai",
     country: "India",
+    year: 2025,
     description:
       "Displayed eco-friendly coir-based solutions for interior solutions",
+    highlights: ["Eco-friendly coir-based interior solutions"],
     image: "/images/trade-shows/architect-interior-expo-2025.webp",
     imageAlt: "Adhi Annam Coir at Architect & Interior Expo",
     status: "past",
@@ -85,8 +111,13 @@ export const tradeShows: TradeShow[] = [
     name: "India International Horti Expo’25",
     location: "Greater Noida",
     country: "India",
+    year: 2025,
     description:
       "Featured our complete range of coconut coir products for horticulture and urban gardening.",
+    highlights: [
+      "Complete range of coconut coir products",
+      "Horticulture and urban gardening",
+    ],
     image: "/images/trade-shows/india-international-horti-expo-2025.webp",
     imageAlt: "Adhi Annam Coir at India International Horti Expo",
     status: "past",
@@ -96,8 +127,13 @@ export const tradeShows: TradeShow[] = [
     name: "IPM Essen’25",
     location: "Essen",
     country: "Germany",
+    year: 2025,
     description:
       "Marked our European debut with sustainable coir pots, liners, and growing media solutions.",
+    highlights: [
+      "European debut",
+      "Sustainable coir pots, liners, and growing media solutions",
+    ],
     image: "/images/trade-shows/ipm-essen-2025.webp",
     imageAlt: "Adhi Annam Coir at IPM Essen",
     status: "past",
@@ -107,8 +143,13 @@ export const tradeShows: TradeShow[] = [
     name: "Gardex’24",
     location: "Tokyo",
     country: "Japan",
+    year: 2024,
     description:
       "Introduced our eco-conscious coir range to the Japanese market, focusing on horticulture and green innovation.",
+    highlights: [
+      "Introduced the eco-conscious coir range to the Japanese market",
+      "Horticulture and green innovation",
+    ],
     image: "/images/trade-shows/gardex-2024.webp",
     imageAlt: "Adhi Annam Coir at Gardex",
     status: "past",
