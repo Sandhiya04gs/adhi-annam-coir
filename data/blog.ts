@@ -42,9 +42,181 @@ export type BlogArticle = {
   publishedAt?: string | null;
   modifiedAt?: string | null;
   author?: string;
+  readingTimeMinutes?: number;
 };
 
 const curatedArticles: BlogArticle[] = [
+  {
+    category: "Product Guides",
+    title:
+      "Coconut Scrubber Wholesale in India: A Buyer’s Guide for Distributors, Retailers and D2C Brands",
+    description:
+      "Coconut scrubber wholesale in India: formats, packing and private-label options for distributors, supermarkets, D2C brands and quick-commerce sellers.",
+    image: "/images/original/blog-archive/coconut-scrubber-wholesale-india-cover.png",
+    href: "https://www.adhiannamcoir.com/post/coconut-scrubber-wholesale-india",
+    content: [],
+    body: [
+      {
+        type: "paragraph",
+        text: "Last updated: November 2026",
+      },
+      {
+        type: "paragraph",
+        text: "Quick answer: For coconut scrubber wholesale in India, buy direct from a manufacturer that offers both ready-to-sell brands and private label. Adhi Annam Coir, a coir manufacturer in Pollachi, Tamil Nadu, makes natural coconut fibre kitchen and bath scrubbers in bulk for distributors, supermarkets, D2C brands, quick-commerce sellers and commercial kitchens across India.",
+      },
+      {
+        type: "paragraph",
+        text: "Coconut scrubbers have moved from temple-town stalls to supermarket shelves, marketplace listings and 10-minute delivery apps. For Indian B2B buyers, the question is no longer whether customers want them, but which format to stock, how to pack it for your channel, and who can supply it consistently. This guide answers those three questions.",
+      },
+      {
+        type: "paragraph",
+        text: "India is the world’s largest producer of coir, so sourcing close to the fibre makes sense. Pollachi, in the heart of Tamil Nadu’s coconut belt, puts raw husk, fibre processing and finished scrubbers under one roof.",
+      },
+      {
+        type: "heading",
+        text: "Which scrubber format suits your channel?",
+      },
+      {
+        type: "list-item",
+        text: "Distributors and wholesalers — Kitchen scrubbers in multi-piece packs for steady supply, consistent size and good margin per case.",
+      },
+      {
+        type: "list-item",
+        text: "Supermarkets and modern trade — Retail-ready single or twin packs with MRP, shelf appeal, barcodes and compliant labelling.",
+      },
+      {
+        type: "list-item",
+        text: "D2C and marketplace brands — Private-label kitchen and bath scrubbers with custom branding, low returns and photogenic products.",
+      },
+      {
+        type: "list-item",
+        text: "Quick-commerce sellers — Compact, light packs with a small footprint, fast-moving SKUs and sturdy packing.",
+      },
+      {
+        type: "list-item",
+        text: "Hotels, restaurants and canteens — Heavy-duty kitchen scrubbers in bulk for large utensils and cleaning without chemicals.",
+      },
+      {
+        type: "heading",
+        text: "Why are Indian buyers switching to coconut scrubbers?",
+      },
+      {
+        type: "list-item",
+        text: "Customers ask for plastic-free products. India banned identified single-use plastic items from 1 July 2022, making shoppers more aware of plastic across the kitchen.",
+      },
+      {
+        type: "list-item",
+        text: "Synthetic sponges shed microplastics. A 2026 University of Bonn study found kitchen sponges release about 0.68 to 4.21 g of microplastics per person each year, with lower-plastic sponges shedding less. Coir sheds no plastic.",
+      },
+      {
+        type: "list-item",
+        text: "Coir works on Indian cookware. Coarse coir fibre cuts through oil and burnt-on masala on kadais, tawas and pressure cookers without scratching steel or non-stick.",
+      },
+      {
+        type: "list-item",
+        text: "Coir dries fast and smells less. It dries quickly between uses and does not hold odour the way synthetic sponges do.",
+      },
+      {
+        type: "heading",
+        text: "Ready-to-sell brands or private label?",
+      },
+      {
+        type: "paragraph",
+        text: "Adhi Annam offers both. Brands that want their own label can order private-label scrubbers with custom shape, size, thickness, stitching, packaging and printed branding.",
+      },
+      {
+        type: "heading",
+        text: "What to check before you place a bulk order",
+      },
+      {
+        type: "list-item",
+        text: "Sample first. Test scrub feel, size and stitching against what your customers expect.",
+      },
+      {
+        type: "list-item",
+        text: "Fibre quality. Ask for consistent fibre density across batches so returns stay low.",
+      },
+      {
+        type: "list-item",
+        text: "Packing for your channel. Confirm MRP labelling, barcodes and pack counts before production.",
+      },
+      {
+        type: "list-item",
+        text: "GST invoicing and dispatch. Check invoicing, dispatch timelines and freight to your city.",
+      },
+      {
+        type: "list-item",
+        text: "Reorder capacity. Make sure the supplier can repeat volumes when your SKU starts moving.",
+      },
+      {
+        type: "heading",
+        text: "Why buy direct from a Pollachi manufacturer?",
+      },
+      {
+        type: "paragraph",
+        text: "Adhi Annam Coir has manufactured coir products since 2007 under ISO 9001:2015 and ISO 14001:2015, with in-house quality control. Buying direct cuts out trader margins, gives you one point of contact for repeat orders, and lets us adjust specifications batch to batch. We ship across India from Pollachi.",
+      },
+      {
+        type: "heading",
+        text: "What are the limitations?",
+      },
+      {
+        type: "list-item",
+        text: "Natural variation. Coir colour and texture vary slightly between batches. Approve a reference sample.",
+      },
+      {
+        type: "list-item",
+        text: "Not for delicate glass. Coir is firm. Position it for utensils and tough grime, not fine glassware.",
+      },
+      {
+        type: "list-item",
+        text: "Replace regularly. Like any scrubber, it should be changed every few weeks for hygiene.",
+      },
+      {
+        type: "paragraph",
+        text: "Stocking coconut scrubbers for your shelves, store or brand? Tell us your channel, monthly volume and whether you want our brands or private label, and we will send samples and wholesale pricing.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Where can I buy coconut scrubbers wholesale in India?",
+        answer:
+          "You can buy coconut scrubbers wholesale direct from manufacturers in Tamil Nadu’s coconut belt. Adhi Annam Coir in Pollachi supplies kitchen and bath scrubbers in bulk to distributors, retailers, D2C brands and commercial kitchens across India.",
+      },
+      {
+        question: "Can I get coconut scrubbers under my own brand?",
+        answer:
+          "Yes. Adhi Annam Coir makes private-label coconut scrubbers with custom shape, size, stitching, packaging and printed branding for Indian retail and D2C brands.",
+      },
+      {
+        question: "Are coconut scrubbers better than synthetic sponges?",
+        answer:
+          "Coconut scrubbers cut through grease without chemicals, dry quickly and shed no microplastics. Synthetic kitchen sponges release microplastics as they wear down during use.",
+      },
+    ],
+    links: [
+      {
+        text: "See our scrubber range",
+        href: "https://www.adhiannamcoir.com/products/home-application",
+      },
+      {
+        text: "Contact us",
+        href: "https://www.adhiannamcoir.com/contact",
+      },
+      {
+        text: "IBEF: From coconut husk to enterprise: how coir is transforming rural lives",
+        href: "https://www.ibef.org/news/from-coconut-husk-to-enterprise-how-coir-is-transforming-rural-lives",
+      },
+      {
+        text: "PIB: Ban on identified single-use plastic items from 1 July 2022",
+        href: "https://pib.gov.in/PressReleasePage.aspx?PRID=1837518",
+      },
+      {
+        text: "University of Bonn: Dishwashing with side effects: kitchen sponges release microplastics",
+        href: "https://www.uni-bonn.de/en/news/045-2026",
+      },
+    ],
+  },
   {
     category: "Erosion Control",
     title:
@@ -498,6 +670,181 @@ const curatedArticles: BlogArticle[] = [
   },
 ];
 
+const blogListingOverrides: Record<
+  string,
+  Pick<BlogArticle, "title" | "description" | "readingTimeMinutes">
+> = {
+  "coconut-scrubber-wholesale-india": {
+    title:
+      "Coconut Scrubber Wholesale in India: A Buyer’s Guide for Distributors, Retailers and D2C Brands",
+    description:
+      "Coconut scrubber wholesale in India: formats, packing and private-label options for distributors, supermarkets, D2C brands and quick-commerce sellers.",
+    readingTimeMinutes: 3,
+  },
+  "coir-roll-construction-landscaping": {
+    title: "Coir Rolls for Construction and Landscaping: A Contractor’s Guide",
+    description:
+      "Coir rolls are a cut-to-fit natural material for slope lining, drainage wraps, bed edging, and mulching. Which grade for which job, for Indian contractors.",
+    readingTimeMinutes: 5,
+  },
+  "coir-green-building-india": {
+    title: "Coir Products for IGBC and GRIHA Green Building Ratings in India",
+    description:
+      "Coir insulation, acoustic, and roof panels contribute to IGBC and GRIHA credits for sustainable materials, energy, and indoor air. How coir supports a green rating.",
+    readingTimeMinutes: 5,
+  },
+  "coir-corporate-gift-india": {
+    title: "Coir Corporate Gifts: Sustainable Office Products Made in India",
+    description:
+      "Coir corporate gifts — laptop stands, organisers, engraved plaques, planters — are sustainable, branded, made-in-India alternatives to plastic giveaways.",
+    readingTimeMinutes: 5,
+  },
+  "rubberised-coir-mattress-india": {
+    title: "Rubberised Coir Mattress: Why It Outperforms Foam in India’s Climate",
+    description:
+      "A rubberised coir mattress is firm, breathable, and durable — latex-bonded coconut fibre that stays cool in India’s heat where foam traps warmth.",
+    readingTimeMinutes: 5,
+  },
+  "coir-corner-cap-furniture-packaging": {
+    title:
+      "Coir Corner Caps and Table Protectors: Replacing EPS Foam in Furniture Packaging",
+    description:
+      "Coir corner caps and table protectors guard furniture edges and surfaces in transit — a biodegradable, moulded-to-fit replacement for EPS and PE foam.",
+    readingTimeMinutes: 5,
+  },
+  "coir-microgreens-pad": {
+    title: "Coir Microgreens Pads: How Urban Farms Are Ditching Plastic Trays and Soil",
+    description:
+      "Coir microgreens pads replace soil and plastic trays — clean, even moisture, uniform germination, compostable. Why urban farms are switching.",
+    readingTimeMinutes: 5,
+  },
+  "coir-roof-panel-false-ceiling": {
+    title: "Coir Roof Panels & False Ceilings: Alternative to PVC & Gypsum",
+    description:
+      "Coir roof panels and false ceilings add insulation, sound absorption, and a natural finish in one layer. A biodegradable alternative to PVC and gypsum.",
+    readingTimeMinutes: 5,
+  },
+  "coir-wastewater-filter-media": {
+    title:
+      "Coir Wastewater Filter Media: A Natural Fibre Alternative for India’s Treatment Plants",
+    description:
+      "Coir wastewater filter media captures suspended solids at 94% efficiency, holds more load than synthetic media, and biodegrades. What Indian STP operators should know.",
+    readingTimeMinutes: 6,
+  },
+  "blog-coconut-coir-manufacturing-process-husk-to-product": {
+    title:
+      "From Coconut Husk to Finished Product: How Coir Is Manufactured at Our Pollachi Facility",
+    description:
+      "How coconut husks become 40+ products across packaging, filtration, horticulture, and construction. Inside the manufacturing process at our Pollachi facility.",
+    readingTimeMinutes: 3,
+  },
+  "blog-coir-scrubbers-vs-synthetic-sponges": {
+    title:
+      "Coconut Coir Scrubbers vs. Synthetic Sponges: Performance, Microplastics, and Private-Label Supply",
+    description:
+      "Synthetic sponges shed millions of microplastic fibres per use. Coir scrubbers shed zero, clean just as well, and are ready for private-label.",
+    readingTimeMinutes: 3,
+  },
+  "blog-epr-packaging-laws-2026-coir-exempt": {
+    title:
+      "EPR Packaging Laws in 2026: How Biodegradable Coir Inserts Keep You Exempt",
+    description:
+      "Seven U.S. states and the EU now charge fees on plastic packaging. Biodegradable coir packaging is exempt. Here’s the timeline and what qualifies.",
+    readingTimeMinutes: 4,
+  },
+  "blog-coir-seedling-trays-root-trainers-reforestation": {
+    title:
+      "Coir Seedling Trays and Root Trainers: How to Boost Transplant Survival in Commercial Reforestation",
+    description:
+      "Coir seedling trays and root trainers air-prune roots, plant directly into soil, and biodegrade. How reforestation programmes are cutting transplant mortality.",
+    readingTimeMinutes: 4,
+  },
+  "needlefelt-coir-rolls-and-rubberised-sheets-applications-across-horticulture-packaging-and-constr": {
+    title:
+      "Needlefelt Coir Rolls and Rubberised Sheets: Applications Across Horticulture, Packaging, and Construction",
+    description:
+      "Needlefelt coir rolls and rubberised sheets are the base material behind 20+ finished products. Here’s how four industries use them differently.",
+    readingTimeMinutes: 4,
+  },
+  "coir-vs-eps-foam-why-electronics-and-cosmetics-brands-are-replacing-styrofoam-inserts": {
+    title:
+      "Coir vs. EPS Foam: Why Electronics and Cosmetics Brands Are Replacing Styrofoam Inserts",
+    description:
+      "Coir foam inserts replace Styrofoam in shipping boxes — EPR-exempt, zero microplastics, custom-moulded in 14–21 days. The questions buyers actually ask, answered.",
+    readingTimeMinutes: 3,
+  },
+  "coir-geotextile-supplier-government-projects": {
+    title:
+      "Coir Geotextile Supplier for Government Projects: How Agencies Approve It and What to Ask Before You Bid",
+    description:
+      "How government agencies in the US, EU, India and beyond approve coir geotextile, and 8 questions contractors should ask a supplier before bidding.",
+    readingTimeMinutes: 4,
+  },
+  "coir-engraved-board-signage": {
+    title: "Coir Engraved Boards: Sustainable Signage and Decor for Indian Offices",
+    description:
+      "Coir engraved boards turn signage and wall decor into natural, tactile branding — a biodegradable, made-in-India alternative to acrylic, PVC, and MDF.",
+    readingTimeMinutes: 4,
+  },
+  "coir-products-carbon-footprint": {
+    title:
+      "Carbon Footprint and Coir: How Indian Manufacturers Are Cutting Scope 3 Emissions",
+    description:
+      "Coir is a low-carbon by-product that replaces high-embodied-energy plastics and foams — cutting Scope 3 emissions for Indian manufacturers under BRSR.",
+    readingTimeMinutes: 5,
+  },
+  "coir-tube-protector-packaging": {
+    title:
+      "Coir Tube Protectors: Guarding Cylindrical Goods Without Plastic Sleeves",
+    description:
+      "Coir tube protectors cushion pipes, rolls, rods, and shafts in transit — a made-to-fit, biodegradable replacement for plastic sleeves and foam end caps.",
+    readingTimeMinutes: 5,
+  },
+  "coir-pallet-ispm15-exempt": {
+    title:
+      "Coir Pallets: ISPM-15 Exempt, Lighter Than Timber, and Fully Biodegradable",
+    description:
+      "Coir pallets are ISPM-15 exempt — no fumigation, no stamps — lighter than timber and biodegradable. Sizes, load ratings, and where they fit.",
+    readingTimeMinutes: 5,
+  },
+  "coir-bubble-wrap-packaging": {
+    title:
+      "Coir Bubble Wrap vs. PE Bubble Wrap: The Packaging Switch That Cuts Plastic Waste",
+    description:
+      "Coir bubble wrap cushions fragile goods like plastic does — but biodegrades, sheds no microplastics, and avoids EPR plastic-waste liability.",
+    readingTimeMinutes: 5,
+  },
+  "blog-coir-erosion-control-blankets-vs-synthetic-geotextiles": {
+    title:
+      "Coir Erosion Control Blankets vs. Synthetic Geotextiles: Degradation Timeline, Performance, and Cost",
+    description:
+      "Coir erosion control blankets stabilise slopes for 2–5 years, promote vegetation, and biodegrade completely. Synthetic geotextiles persist for decades. Here’s the full comparison.",
+    readingTimeMinutes: 4,
+  },
+  "blog-coir-packaging-containers-moulded-boxes-food-cosmetics": {
+    title:
+      "Coir Packaging Containers: Natural Moulded Boxes for Food, Cosmetics, and Gift Brands",
+    description:
+      "Moulded coir containers replace plastic clamshells for food, cosmetics, and gift brands. Brandable, stackable, and zero plastic waste at end of life.",
+    readingTimeMinutes: 3,
+  },
+  "blog-natural-paint-booth-filters-coir-overspray-disposal": {
+    title:
+      "Natural Paint Booth Filters: How Coir Media Captures Overspray and Cuts Disposal Costs",
+    description:
+      "Coir paint booth filters capture overspray, hold more solids than fibreglass, and dispose as non-hazardous waste. The costs most facility managers don’t see.",
+    readingTimeMinutes: 4,
+  },
+  "coir-acoustic-panels-how-natural-fibre-delivers-sound-absorption-without-pvc-or-mineral-wool":
+    {
+      title:
+        "Coir Acoustic Panels: How Natural Fibre Delivers Sound Absorption Without PVC or Mineral Wool",
+      description:
+        "Coir acoustic panels absorb sound with zero VOCs, natural flame resistance, and no irritant fibres. How they compare to mineral wool and synthetic foam.",
+      readingTimeMinutes: 4,
+    },
+};
+
 type BlogArchiveRecord = {
   slug: string;
   url: string;
@@ -517,31 +864,92 @@ function getSlug(href: string) {
   return href.split("/").filter(Boolean).pop();
 }
 
-const sourceArticles: BlogArchiveRecord[] = blogArchive;
+const latestBlogArticle: BlogArchiveRecord = {
+  slug: "coconut-scrubber-wholesale-india",
+  url: "https://www.adhiannamcoir.com/post/coconut-scrubber-wholesale-india",
+  title:
+    "Coconut Scrubber Wholesale in India: A Buyer’s Guide for Distributors, Retailers and D2C Brands",
+  description:
+    "Coconut scrubber wholesale in India: formats, packing and private-label options for distributors, supermarkets, D2C brands and quick-commerce sellers.",
+  image: "/images/original/blog-archive/coconut-scrubber-wholesale-india-cover.png",
+  imageAlt:
+    "Coconut scrubber wholesale India: natural coir kitchen scrubbers in retail packs beside a steel kadai",
+  publishedAt: "2026-11-23T00:00:00.000Z",
+  modifiedAt: "2026-11-23T00:00:00.000Z",
+  author: "Vikas Arun",
+  body: [],
+  images: [],
+  links: [],
+};
+
+const sourceArticles: BlogArchiveRecord[] = [latestBlogArticle, ...blogArchive];
 
 export const articles: BlogArticle[] = sourceArticles
   .map((article) => {
     const curated = curatedArticles.find(
       (item) => getSlug(item.href) === article.slug,
     );
+    const listingOverride = blogListingOverrides[article.slug];
 
     return {
       category: curated?.category ?? "Coir Insights",
-      title: article.title,
-      description: article.description,
+      title: listingOverride?.title ?? article.title,
+      description: listingOverride?.description ?? article.description,
       image: article.image,
       href: article.url,
       content: curated?.content ?? [],
       faqs: curated?.faqs ?? [],
-      body: article.body,
-      images: article.images,
-      links: article.links,
+      body: curated?.body ?? article.body,
+      images: curated?.images ?? article.images,
+      links: curated?.links ?? article.links,
       imageAlt: article.imageAlt,
       publishedAt: article.publishedAt,
       modifiedAt: article.modifiedAt,
       author: article.author,
+      readingTimeMinutes: listingOverride?.readingTimeMinutes,
     };
   })
   .sort((left, right) =>
     (right.publishedAt ?? "").localeCompare(left.publishedAt ?? ""),
   );
+
+export type BlogListingArticle = BlogArticle & {
+  publishedAt: string;
+  readingTimeMinutes: number;
+};
+
+const blogListingPageSize = 5;
+const blogListingPageCount = 5;
+
+export function getBlogListingPage(
+  page: number,
+): BlogListingArticle[] | undefined {
+  if (
+    !Number.isInteger(page) ||
+    page < 1 ||
+    page > blogListingPageCount
+  ) {
+    return undefined;
+  }
+
+  const start = (page - 1) * blogListingPageSize;
+  const pageArticles = articles.slice(start, start + blogListingPageSize);
+
+  if (pageArticles.length !== blogListingPageSize) {
+    throw new Error(`Blog listing page ${page} is incomplete`);
+  }
+
+  return pageArticles.map((article) => {
+    if (!article.publishedAt || article.readingTimeMinutes === undefined) {
+      throw new Error(
+        `Missing listing metadata for blog article: ${getSlug(article.href)}`,
+      );
+    }
+
+    return {
+      ...article,
+      publishedAt: article.publishedAt,
+      readingTimeMinutes: article.readingTimeMinutes,
+    };
+  });
+}
