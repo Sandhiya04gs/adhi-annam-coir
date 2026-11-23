@@ -4,19 +4,8 @@ Corporate website for **Adhi Annam Coir Comforts Pvt. Ltd.** (Pollachi, Tamil Na
 
 ## Pages
 
-| Route | Description |
-| --- | --- |
-| `/` | Home – hero, product categories, blog highlights, strengths, clients, CTA |
-| `/about` | Company story, global reach, vision & mission, management team, certifications, values |
-| `/products` | All 9 product categories |
-| `/products/[slug]` | Category detail with the products available in it |
-| `/products/[slug]/[product]` | Product specifications, applications and enquiry links |
-| `/trade-shows` | Exhibition history and the PackVision Expo 2026 listing |
-| `/blog` | Blog articles |
-| `/blog/[slug]` | Article detail |
-| `/contact` | Contact details, enquiry form (opens the visitor's email app), map |
-
-Product category slugs are defined in `data/products.ts`.
+Description 
+The website includes several pages designed to provide visitors with complete information about Adhi Annam Coir. The Home page features a hero section, product categories, blog highlights, company strengths, clients and a call-to-action section. The About page presents the company's story, global reach, vision, mission, management team, certifications and core values. The Products section showcases all nine product categories, with individual category pages displaying available products and detailed product pages providing specifications, applications and enquiry options. The Trade Shows page highlights exhibition history and the PackVision Expo 2026 listing. The Blog section provides blog articles with individual article detail pages. Finally, the Contact page includes company contact information, an enquiry form that opens the visitor's email application, and a location map.
 
 ## Tech stack
 
