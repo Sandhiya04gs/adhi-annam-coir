@@ -56,10 +56,3 @@ data/blog.ts         Blog articles (titles, images, links)
 public/              Logo, hero banner, certificates, product images
 ```
 
-## Editing Content
-
-- **Products:** Update `data/products.ts` and add specifications in `data/product-details.ts`. Store product photos in `public/products/`.
-- **Blog:** Add or update blog article objects in `data/blog.ts`.
-- **Contact details:** Update `components/Footer.tsx` and `app/contact/page.tsx`.
-
-##
